@@ -1,2 +1,2 @@
-# Free-Non-Linear-Dynamics-of-1-dof-Pendulum
-This work is basically numerical analysis of non linear behaviour of pendulum. There is no forcing occuring, and it's one degree of freedom. There is no linearization here, and therefore the differential equations are non linear and hence numerical solutions are computed using MATLAB.
+# Quality factor analysis of 1dof nonlinear damped pendulum
+In this work numerical computations using MATLAB are done, and effect of velocity dependent nonlinear damping on quality factor is studied. Quality factor used here is based on energy definition.
