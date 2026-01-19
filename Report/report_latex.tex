@@ -78,9 +78,9 @@ T = \frac{1}{2}ml^2\dot{\theta}^2 \quad \text{and} \quad V = mgl(1 - \cos{\theta
 \]
 
 Lagrangian of the system is:
-\[
+\begin{equation}
 L = T - V = \frac{1}{2}ml^2\dot{\theta}^2 - mgl(1 - \cos{\theta})
-\]
+\end{equation}
 
 For generalized force we will use the fact that the work done remains same in both coordinate system. \\
 \[
@@ -100,6 +100,72 @@ ml^2\ddot{\theta} + mgl\sin{\theta} = -bl^{n+1}|\dot{\theta}|^{n-1}\dot{\theta}
 \[
 ml^2\ddot{\theta}  + bl^{n+1}|\dot{\theta}|^{n-1}\dot{\theta} + mgl\sin{\theta}= 0
 \]
+
+Rearranging it will give us:
+\[
+\ddot{\theta} + 2\left(\frac{bl^n}{2m\sqrt{gl}}\right)\left(\sqrt{\frac{g}{l}}\right)|\dot{\theta}|^{n-1}\dot{\theta} + \left(\sqrt{\frac{g}{l}}\right)^2\sin{\theta} = 0
+\]
+
+And we introduce new variables here as: 
+\[
+\zeta = \frac{bl^n}{2m\sqrt{gl}} \; \text{and} \; \omega_n = \sqrt{\frac{g}{l}}
+\]
+
+The equation of motion finally we have is:
+\begin{equation}
+\ddot{\theta} + 2\zeta \omega_n |\dot{\theta}|^{n-1}\dot{\theta} + \omega_n^2\sin{\theta} = 0
+\end{equation}
+
+If we dimensionally analyze the zeta parameter, it's dimensions would be:
+\[
+\left[\zeta\right] = \left[\frac{bl^n}{2m\sqrt{gl}}\right] = \left[T\right]^{n-1}
+\]
+
+If you observe, $\zeta$ is dimensionless only when n = 1. \\
+\\
+\\
+\textbf{Quality factor calculation for a limiting case:}
+
+We will find a quality factor for very special case, whose formula is generally known to everyone:
+\[
+Q = \frac{1}{2\zeta}
+\]
+Now this is valid in very special case when:\\
+1) n = 1\\
+2) $\theta$ is very small\\
+3) $\zeta$ is very small\\
+
+Using this assumptions we will derive the formula:\\
+
+Energy expression:
+\begin{equation}
+E = \frac{1}{2}ml^2\dot{\theta}^2 + mgl(1-\cos{\theta})
+\end{equation}
+
+Since $\theta$ is very small, so $\cos{\theta} \approx 1 - \frac{\theta^2}{2}$
+\[
+E = \frac{ml}{2}(l\dot{\theta}^2 + g\theta^2)
+\]
+
+\begin{equation}
+E = \frac{ml^2}{2}(\dot{\theta}^2 + \omega_n^2\theta^2)
+\end{equation}
+
+Now for the assumptions made, the equation of motion will be:
+\begin{equation}
+\ddot{\theta} + 2\zeta\omega_n\dot{\theta} + \omega_n^2\theta = 0
+\end{equation}
+The solution of the above equation when $\zeta < 1$ would be: 
+\begin{equation}
+\theta(t) = Ae^{-\zeta \omega_nt}\sin{(\omega_nt\sqrt{1-\zeta^2 } + \phi)}
+\end{equation}
+differentiating it will give:
+\begin{equation}
+\dot{\theta}(t) = (-\zeta\omega_n)Ae^{-\zeta\omega_nt}\sin{(\omega_nt\sqrt{1-\zeta^2} + \phi)} + Ae^{-\zeta\omega_nt}(\omega_n\sqrt{1-\zeta^2})\cos{(\omega_nt\sqrt{1-\zeta^2} + \phi)}
+\end{equation}
+
+
+
 
 \section{Implementation}
 
