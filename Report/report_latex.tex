@@ -164,10 +164,68 @@ differentiating it will give:
 \dot{\theta}(t) = (-\zeta\omega_n)Ae^{-\zeta\omega_nt}\sin{(\omega_nt\sqrt{1-\zeta^2} + \phi)} + Ae^{-\zeta\omega_nt}(\omega_n\sqrt{1-\zeta^2})\cos{(\omega_nt\sqrt{1-\zeta^2} + \phi)}
 \end{equation}
 
+We also have:
+\begin{equation}
+\omega_n^2\theta^2 = A^2\omega_n^2e^{-2\zeta\omega_nt}\sin^2{(\omega_nt\sqrt{1-\zeta^2} + \phi)}
+\end{equation}
 
+\begin{equation}
+\begin{aligned}
+\dot{\theta}^2 = A^2e^{-2\zeta\omega_nt}\zeta^2\omega_n^2\sin^2{(\omega_nt\sqrt{1-\zeta^2} + \phi)} + A^2e^{-2\zeta\omega_nt}(\omega_n^2(1-\zeta^2))\cos^2{(\omega_nt\sqrt{1-\zeta^2} + \phi)}  \\ 
+- 2\omega_n^2\zeta\sqrt{1-\zeta^2}A^2e^{-2\zeta\omega_nt}\sin{(\omega_nt\sqrt{1-\zeta^2} + \phi)}\cos{(\omega_nt\sqrt{1-\zeta^2} + \phi)}
+\end{aligned}
+\end{equation}
+
+Using (8) and (9) in (4) we get the following expression for energy:
+
+\begin{equation}
+E = \frac{ml^2A^2\omega_n^2e^{-2\zeta\omega_nt}}{2}(1-\zeta^2\cos{(2\omega_nt\sqrt{1-\zeta^2} + 2\phi)} - \zeta\sqrt{1-\zeta^2}\sin{(2\omega_nt\sqrt{1-\zeta^2} + 2\phi)})
+\end{equation}
+
+For an under-damped system, the time period for a cycle is $T_d = \frac{2\pi}{\omega_n\sqrt{1-\zeta^2}}$ \\
+
+Quality factor can be defined as $Q = 2\pi \times \frac{E(nT_d)}{E(nT_d)-E((n+1)T_d)}$ , where n is some integer,
+
+That gives us:
+\begin{equation}
+Q = \frac{2\pi}{1-e^{-2\zeta\omega_nT_d}}
+\end{equation}
+
+\[
+e^{-2\zeta\omega_nT_d} = 1 - 2\zeta\omega_nT_d + \frac{(2\zeta\omega_nT_d)^2}{2!} - \frac{(2\zeta\omega_nT_d)^3}{3!} + .......
+\]
+
+Since $\zeta << 1$ then we can ignore higher order terms and $e^{-2\zeta\omega_nT_d} \approx 1 - 2\zeta\omega_nT_d$
+
+Whch gives us:
+\begin{equation}
+Q = \frac{\sqrt{1-\zeta^2}}{2\zeta}, \text{since} \; \zeta << 1 \implies Q = \frac{1}{2\zeta}
+\end{equation}
+
+Since the $\zeta$ definition is very limited, we are not going to use it, we are going to use the energy definition. \\
+
+So now let's see how will we implement the governing equation in MATLAB. 
+So back to our governing equation and we won't linearize, we will take the exact equation: 
+
+\[
+\ddot{\theta} + 2\zeta \omega_n |\dot{\theta}|^{n-1}\dot{\theta} + \omega_n^2\sin{\theta} = 0
+\]
 
 
 \section{Implementation}
+
+To solve the given equation numerically, ode113 solver is used, to use this solver, we need to write the equation in state space form:\\
+
+We define two variables as, $\Theta_1 = \theta$ and $\Theta_2 = \dot{\theta} = \dot{\Theta_1}$, and hence $\dot{\Theta_2} = \ddot{\theta}$
+
+Therefore the state space form would be:
+\begin{equation}
+\dot{\Theta_1} = \Theta_2
+\end{equation}
+
+\begin{equation}
+\dot{\Theta_2} = 2\zeta \omega_n |\Theta_2|^{n-1}\Theta_2 + \omega_n^2\sin{\Theta_1}
+\end{equation}
 
 
 \section{Results}
