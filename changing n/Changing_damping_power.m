@@ -70,7 +70,7 @@ xlabel("time")
 ylabel("Energy")
 grid on
 hold on
-for n = [1 2 3 4]
+for n = [1 2 3]
     [t,theta] = ode113(@(t,theta) [theta(2); (-(omega_n^2).*sin(theta(1)) -(2*zeta*omega_n).*(((abs(theta(2))^(n - 1))*(theta(2)))))], [0, 15], [pi/3, 0]);
     E = (0.5*m*(l^2)).*(theta(:, 2).^2) + (m*g*l).*(1 - cos(theta(:, 1)));
     plot(t, E)
@@ -95,7 +95,7 @@ for n = [1 2 3 4]
     Quality_factor3 = 2*pi*((E(A(3)))/(E(A(3)) - E(A(5))));
     Q_3 = [Q_3; Quality_factor3];
 end
-legend("0", "1", "2", "3", "4")
+legend("0", "1", "2", "3")
 hold off
 Q_1
 Q_2
